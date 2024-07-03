@@ -4,26 +4,6 @@ USE ROLE ACCOUNTADMIN;
 CREATE WAREHOUSE IF NOT EXISTS COMPUTE_WH WITH WAREHOUSE_SIZE='X-SMALL';
 CREATE WAREHOUSE IF NOT EXISTS TRAIN_WH WITH WAREHOUSE_SIZE='MEDIUM';
 
--- Create a fresh Database
-CREATE OR REPLACE DATABASE KAGGLE_TITANIC_CHALLENGE;
-USE SCHEMA KAGGLE_TITANIC_CHALLENGE.PUBLIC;
-
--- Create the integration with Github
-CREATE OR REPLACE API INTEGRATION GITHUB_INTEGRATION_MICHAEL
-    api_provider = git_https_api
-    api_allowed_prefixes = ('https://github.com/michaelgorkow/')
-    enabled = true
-    comment='Michaels repository containing all the awesome code.';
-
--- Create the integration with the Github repository
-CREATE GIT REPOSITORY TITANIC_CHALLENGE_REPO 
-	ORIGIN = 'https://github.com/michaelgorkow/snowflake_kaggle_titanic_challenge' 
-	API_INTEGRATION = 'GITHUB_INTEGRATION_MICHAEL' 
-	COMMENT = 'Michaels repository containing all the awesome code.';
-
--- Fetch most recent files from Github repository
-ALTER GIT REPOSITORY TITANIC_CHALLENGE_REPO FETCH;
-
 -- Setup Procedure
 WITH SETUP AS PROCEDURE()
   RETURNS STRING
