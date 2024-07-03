@@ -17,6 +17,12 @@ Register for a free Snowflake Trial Account:
 
 Integrate this Github Repository with Snowflake by running the following SQL code in a Snowflake Worksheet:
 ```sql
+USE ROLE ACCOUNTADMIN;
+
+-- Create warehouses
+CREATE WAREHOUSE IF NOT EXISTS COMPUTE_WH WITH WAREHOUSE_SIZE='X-SMALL';
+CREATE WAREHOUSE IF NOT EXISTS TRAIN_WH WITH WAREHOUSE_SIZE='MEDIUM';
+
 -- Create a fresh Database
 CREATE OR REPLACE DATABASE KAGGLE_TITANIC_CHALLENGE;
 USE SCHEMA KAGGLE_TITANIC_CHALLENGE.PUBLIC;
@@ -36,6 +42,13 @@ CREATE GIT REPOSITORY TITANIC_CHALLENGE_REPO
 
 -- Fetch most recent files from Github repository
 ALTER GIT REPOSITORY TITANIC_CHALLENGE_REPO FETCH;
+
+-- Run the Setup Script
+EXECUTE IMMEDIATE FROM @KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/setup.sql;
+
+-- Verify that data is available
+-- You should see three tables (PASSENGER, PASSENGER_FEATURES, PASSENGER_KAGGLE_FEATURES$V1)
+SHOW TABLES;
 ```
 
 Explore the Example Notebook:
