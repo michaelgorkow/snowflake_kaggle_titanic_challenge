@@ -51,7 +51,8 @@ EXECUTE IMMEDIATE FROM @KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/b
 SHOW TABLES;
 ```
 
-Explore the Example Notebook:
+Explore the Example Notebook by creating a new Notebook from the integrated Github Repository:  
+<img width="500px" src="./_internal/create_notebook_from_repository.png" alt="create_notebook_from_repository png" />
 
 
 ## What Data Will I Use in This Competition?
