@@ -11,6 +11,28 @@ While there was some element of luck involved in surviving, it seems some groups
 
 In this challenge, we ask you to build a predictive model that answers the question: “what sorts of people were more likely to survive?” using passenger data (i.e. name, age, gender, socio-economic class, etc).
 
+## What Data Will I Use in This Competition?
+In this competition, you have access to a Snowflake table called **PASSENGERS**.  
+This table contains the **PASSENGER_ID** and a label-column **SURVIVED** which indicates whether a passenger sruvived or not.  
+We know the survival status for 891 passengers but the status for the remaining 418 passengers is unknown and therefore missing in that table.
+
+In addition, your team of smart datascientists already registered a couple of features in your **Snowflake Feature Store**.  
+This feature store includes information about the name, age, gender, socio-economic class, etc. 
+
+Use your datascience expertise to:
+* Explore the existing Data
+* Develop and Register new Features in the **Feature Store**
+* Train and Register a Machine Learning Model in the **Model Registry**
+* Create Scores for passengers with unknown survival status
+
+## Evaluation
+### Goal
+It is your job to predict if a passenger survived the sinking of the Titanic or not.  
+For each passenger where the survival status is unknown, you must predict a 0 (died) or 1 (survived).
+
+### Metric
+Your score is the percentage of passengers you correctly predict. This is known as accuracy.
+
 ## Get Started
 Register for a free Snowflake Trial Account:
 - [Free Snowflake Trial Account](https://signup.snowflake.com/)
@@ -53,29 +75,6 @@ SHOW TABLES;
 
 Explore the Example Notebook by creating a new Notebook from the integrated Github Repository:  
 <img width="500px" src="./_internal/create_notebook_from_repository.png" alt="create_notebook_from_repository png" />
-
-
-## What Data Will I Use in This Competition?
-In this competition, you have access to a Snowflake table called **PASSENGERS**.  
-This table contains the **PASSENGER_ID** and a label-column **SURVIVED** which indicates whether a passenger sruvived or not.  
-We know the survival status for 891 passengers but the status for the remaining 418 passengers is unknown and therefore missing in that table.
-
-In addition, your team of smart datascientists already registered a couple of features in your **Snowflake Feature Store**.  
-This feature store includes information about the name, age, gender, socio-economic class, etc. 
-
-Use your datascience expertise to:
-* Explore the existing Data
-* Develop and Register new Features in the **Feature Store**
-* Train and Register a Machine Learning Model in the **Model Registry**
-* Create Scores for passengers with unknown survival status
-
-## Evaluation
-### Goal
-It is your job to predict if a passenger survived the sinking of the Titanic or not.  
-For each passenger where the survival status is unknown, you must predict a 0 (died) or 1 (survived).
-
-### Metric
-Your score is the percentage of passengers you correctly predict. This is known as accuracy.
 
 ## Snowflake Features in this Challenge
 * [Snowflake's Git Integration](https://docs.snowflake.com/en/developer-guide/git/git-overview)
