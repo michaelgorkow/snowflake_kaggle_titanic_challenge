@@ -9,7 +9,7 @@ WITH SETUP AS PROCEDURE()
   RETURNS STRING
   LANGUAGE PYTHON
   RUNTIME_VERSION = '3.9'
-  PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.0','snowflake.core==0.8.0')
+  PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.1','snowflake.core==0.8.0')
   IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/train.csv',
              '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/test.csv',
              '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/helper_functions.py',
@@ -63,6 +63,18 @@ def run(session):
     passenger_features = session.write_pandas(passenger_features, table_name='PASSENGER_FEATURES', overwrite=True, quote_identifiers=False)
     passenger_labels = session.write_pandas(passenger_labels, table_name='PASSENGER', overwrite=True, quote_identifiers=False)
 
+    # Convenience Features
+    # Uppercase the SEX column (will be useful when we one-hot-encode this variable)
+    passenger_features = passenger_features.with_column('SEX', F.upper(col('SEX')))
+    
+    # Add the names for embarkation and uppercase them
+    # Southampton (S), Cherbourg (C), Queenstown (Q)
+    passenger_features = passenger_features.with_column('EMBARKED', 
+        when(col('EMBARKED')=='S', lit('Southampton'))
+        .when(col('EMBARKED')=='C', lit('Cherbourg'))
+        .when(col('EMBARKED')=='Q', lit('Queenstown')))
+    passenger_features = passenger_features.with_column('EMBARKED', F.upper(col('EMBARKED')))
+
     # Read feature descriptions
     with open(import_dir + 'feature_descriptions.json', 'r') as file:
         feature_descriptions = json.load(file)
@@ -104,7 +116,7 @@ CREATE OR REPLACE PROCEDURE calculate_challenge_score(STAGE_PATH STRING)
 RETURNS STRING
 LANGUAGE PYTHON
 RUNTIME_VERSION = '3.9'
-PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.0')
+PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.1')
 IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/test_100_percent.csv')
 HANDLER = 'calculate_score'
 AS

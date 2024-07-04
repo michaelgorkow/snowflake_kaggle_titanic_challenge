@@ -74,7 +74,12 @@ SHOW TABLES;
 ```
 
 Explore the Example Notebook by creating a new Notebook from the integrated Github Repository:  
-<img width="500px" src="./_internal/create_notebook_from_repository.png" alt="create_notebook_from_repository png" />
+
+<img width="500px" src="./_internal/images/create_notebook_from_repository.png" alt="create_notebook_from_repository png" />
+  
+Make sure to add the required libraries to your Notebook by using the Package Picker at the top:  
+
+<img width="300px" src="./_internal/images/notebook_package_picker.png" alt="notebook_package_picker png" />
 
 ## Snowflake Features in this Challenge
 * [Snowflake's Git Integration](https://docs.snowflake.com/en/developer-guide/git/git-overview)
