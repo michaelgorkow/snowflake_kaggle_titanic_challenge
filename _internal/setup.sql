@@ -22,6 +22,7 @@ def run(session):
     import sys
     import json
     import snowflake.snowpark.functions as F
+    from snowflake.snowpark.functions import col, lit, when
     from snowflake.core import Root
     from snowflake.core._common import CreateMode
     from snowflake.core.schema import Schema
