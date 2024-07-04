@@ -70,13 +70,20 @@ ALTER GIT REPOSITORY TITANIC_CHALLENGE_REPO FETCH;
 EXECUTE IMMEDIATE FROM @KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/setup.sql;
 ```
 
-Explore the Example Notebook by creating a new Notebook from the integrated Github Repository:  
+Explore the Example Notebook by creating a new Notebook from the integrated Github Repository using the `challenge_demo.iypnb`:  
 
 <img width="500px" src="./_internal/images/create_notebook_from_repository.png" alt="create_notebook_from_repository png" />
   
 Make sure to add the required libraries to your Notebook by using the Package Picker at the top:  
 
 <img width="300px" src="./_internal/images/notebook_package_picker.png" alt="notebook_package_picker png" />
+
+## Excercise
+After running the example it's your turn to try and improve the pipeline.   
+Create a new notebook, select the `challenge_excercise.iypnb` and add the required packages. This excercise notebook comes with predefined excercises but feel free to add any code you think is useful to improve the model.
+
+## Solution
+You can check and run the solution by creating a notebook using the `challenge_excercise_solution.iypnb`.
 
 ## Snowflake Features in this Challenge
 * [Snowflake's Git Integration](https://docs.snowflake.com/en/developer-guide/git/git-overview)
