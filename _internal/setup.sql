@@ -10,10 +10,10 @@ WITH SETUP AS PROCEDURE()
   LANGUAGE PYTHON
   RUNTIME_VERSION = '3.9'
   PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.1','snowflake.core==0.8.0')
-  IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/train.csv',
-             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/test.csv',
-             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/helper_functions.py',
-             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/feature_descriptions.json')
+  IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/train.csv',
+             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/test.csv',
+             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/helper_functions.py',
+             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/feature_descriptions.json')
   HANDLER = 'run'
   AS
 $$
@@ -119,7 +119,7 @@ RETURNS STRING
 LANGUAGE PYTHON
 RUNTIME_VERSION = '3.9'
 PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.1')
-IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/test_100_percent.csv')
+IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/test_100_percent.csv')
 HANDLER = 'calculate_score'
 AS
 $$
