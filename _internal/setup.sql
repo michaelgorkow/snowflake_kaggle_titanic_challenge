@@ -12,7 +12,7 @@ WITH SETUP AS PROCEDURE()
   PACKAGES = ('snowflake-snowpark-python','snowflake-ml-python==1.5.1','snowflake.core==0.8.0')
   IMPORTS = ('@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/train.csv',
              '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/test.csv',
-             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/helper_functions.py',
+             '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/code/helper_functions.py',
              '@KAGGLE_TITANIC_CHALLENGE.PUBLIC.TITANIC_CHALLENGE_REPO/branches/main/_internal/data/feature_descriptions.json')
   HANDLER = 'run'
   AS
