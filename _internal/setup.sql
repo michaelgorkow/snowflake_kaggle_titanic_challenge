@@ -1,8 +1,8 @@
 USE ROLE ACCOUNTADMIN;
 
 -- Create warehouses
-CREATE WAREHOUSE IF NOT EXISTS COMPUTE_WH WITH WAREHOUSE_SIZE='X-SMALL';
 CREATE WAREHOUSE IF NOT EXISTS TRAIN_WH WITH WAREHOUSE_SIZE='MEDIUM';
+CREATE WAREHOUSE IF NOT EXISTS COMPUTE_WH WITH WAREHOUSE_SIZE='X-SMALL';
 
 -- Setup Procedure
 WITH SETUP AS PROCEDURE()
@@ -21,6 +21,7 @@ def run(session):
     import pandas as pd
     import sys
     import json
+    import snowflake.snowpark.functions as F
     from snowflake.core import Root
     from snowflake.core._common import CreateMode
     from snowflake.core.schema import Schema
