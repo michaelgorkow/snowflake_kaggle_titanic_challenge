@@ -138,3 +138,5 @@ def calculate_score(session, stage_path):
     except Exception as e:
         return e
 $$;
+
+SHOW TABLES;
