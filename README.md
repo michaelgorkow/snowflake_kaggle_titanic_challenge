@@ -37,6 +37,9 @@ Your score is the percentage of passengers you correctly predict. This is known 
 Register for a free Snowflake Trial Account:
 - [Free Snowflake Trial Account](https://signup.snowflake.com/)
 
+> [!IMPORTANT]
+> Some features like the Feature Store require Snowflake Enterprise Edition or higher. Availability of specific Cortex LLM models can be found (here)[https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability].
+
 Integrate this Github Repository with Snowflake by running the following SQL code in a Snowflake Worksheet:
 ```sql
 USE ROLE ACCOUNTADMIN;
